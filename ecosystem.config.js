@@ -18,7 +18,7 @@ module.exports = {
       host: "47.94.210.206",
       port: "1221",
       ref: "origin/master",
-      repo: "git@github.com:Hhpon/car.git",
+      repo: "git@github.com:Hhpon/car-.git",
       path: "/home/hhp/www/car/production",
       ssh_options: "StrictHostKeyChecking=no",
       "post-deploy":

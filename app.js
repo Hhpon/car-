@@ -35,7 +35,7 @@ app.post('/sendinfo', (req, res) => {
     let mailOptions = {
         from: '"华宇官网" <3231308323@qq.com>', // sender address
         // to: 'xdsbzxy@163.com', // list of receivers
-        to: '78180682@qq.com',
+        to: '1252006442@qq.com',
         subject: '有人报名啦', // Subject line
         // 发送text或者html格式
         text: `姓名：${userInfo.name}\n电话：${userInfo.tel}\n性别：${userInfo.sex}\n民族：${userInfo.min}`// plain text body

@@ -5,7 +5,7 @@ const nodemailer = require('nodemailer');
 
 const app = express()
 const corsOptions = {
-    origin: 'http://localhost:8080',
+    origin: 'http://carar.hhp.im',
     optionsSuccessStatus: 200
 }
 

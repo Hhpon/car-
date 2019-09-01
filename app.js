@@ -22,20 +22,20 @@ app.post('/sendinfo', (req, res) => {
     const userInfo = req.body
     let transporter = nodemailer.createTransport({
         // host: 'smtp.ethereal.email',
-        service: '163', // 使用了内置传输发送邮件 查看支持列表：https://nodemailer.com/smtp/well-known/
+        service: 'qq', // 使用了内置传输发送邮件 查看支持列表：https://nodemailer.com/smtp/well-known/
         port: 465, // SMTP 端口
         secureConnection: true, // 使用了 SSL
         auth: {
-            user: 'hhpone@163.com',
+            user: '3231308323@qq.com',
             // 这里密码不是qq密码，是你设置的smtp授权码
-            pass: 'hyjx123',
+            pass: 'oeztywmkvoqgdbad',
         }
     });
 
     let mailOptions = {
         from: '"华宇官网" <3231308323@qq.com>', // sender address
-        to: 'xdsbzxy@163.com', // list of receivers
-        // to: '624791164@qq.com',
+        // to: 'xdsbzxy@163.com', // list of receivers
+        to: '78180682@qq.com',
         subject: '有人报名啦', // Subject line
         // 发送text或者html格式
         text: `姓名：${userInfo.name}\n电话：${userInfo.tel}\n性别：${userInfo.sex}\n民族：${userInfo.min}`// plain text body

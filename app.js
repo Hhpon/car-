@@ -2,10 +2,11 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const nodemailer = require('nodemailer');
+const fs = require('fs')
 
 const app = express()
 const corsOptions = {
-    origin: 'http://carar.hhp.im',
+    origin: ['http://carar.hhp.im', 'http://localhost:8080'],
     optionsSuccessStatus: 200
 }
 
@@ -17,9 +18,22 @@ app.get('/', (req, res) => {
     res.send('ok')
 })
 
+app.get('/getcount', (req, res) => {
+    const count = fs.readFileSync('count.txt')
+    res.send(count)
+})
+
 app.post('/sendinfo', (req, res) => {
     console.log(req.body);
     const userInfo = req.body
+    let count;
+    try {
+        count = parseInt(fs.readFileSync('./count.txt'));
+    } catch (error) {
+        count = 0
+    }
+    count += 1
+    fs.writeFileSync('count.txt', count)
     let transporter = nodemailer.createTransport({
         // host: 'smtp.ethereal.email',
         service: 'qq', // 使用了内置传输发送邮件 查看支持列表：https://nodemailer.com/smtp/well-known/
@@ -43,13 +57,13 @@ app.post('/sendinfo', (req, res) => {
     };
 
     // send mail with defined transport object
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            return console.log(error);
-        }
-        console.log('Message sent: %s', info.messageId);
-        // Message sent: <04ec7731-cc68-1ef6-303c-61b0f796b78f@qq.com>
-    });
+    // transporter.sendMail(mailOptions, (error, info) => {
+    //     if (error) {
+    //         return console.log(error);
+    //     }
+    //     console.log('Message sent: %s', info.messageId);
+    //     // Message sent: <04ec7731-cc68-1ef6-303c-61b0f796b78f@qq.com>
+    // });
     res.send('ok')
 })
 
